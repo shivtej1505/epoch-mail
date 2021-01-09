@@ -5,6 +5,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import Layout from "../common/layout";
 
 const Hello = props => (
   <div>Hello {props.name}!</div>
@@ -20,7 +21,9 @@ Hello.propTypes = {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <Layout>
+      <Hello name="React" />
+    </Layout>,
     document.body.appendChild(document.createElement('div')),
   )
 })
