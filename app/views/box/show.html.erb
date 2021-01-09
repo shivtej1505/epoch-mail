@@ -1,0 +1,5 @@
+<% @mails.each do |im| %>
+  <p><%= im.mail.to %></p>
+  <p><%= im.mail.subject %></p>
+  <p><%= im.mail.body.to_s %></p>
+<% end %>

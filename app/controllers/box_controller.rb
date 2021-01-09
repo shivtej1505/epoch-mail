@@ -3,8 +3,8 @@ class BoxController < ApplicationController
     @box = Box.generate
   end
 
-  def mails
-    box = Box.find_by(email: params[:email])
+  def show
+    box = Box.find_by_slug(params[:slug])
     @mails = box.inbound_mails
   end
 end

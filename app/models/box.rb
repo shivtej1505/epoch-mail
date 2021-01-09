@@ -13,5 +13,10 @@ class Box < ApplicationRecord
       end
       Box.create(email: email)
     end
+
+    def find_by_slug(slug)
+      email = "#{slug}@#{DOMAIN}"
+      Box.find_by(email: email)
+    end
   end
 end
