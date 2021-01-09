@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_065733) do
+ActiveRecord::Schema.define(version: 2021_01_09_082056) do
 
   create_table "action_mailbox_inbound_emails", charset: "utf8mb4", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -49,6 +49,24 @@ ActiveRecord::Schema.define(version: 2021_01_09_065733) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "box_mails", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "box_id", null: false
+    t.bigint "inbound_mail_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["box_id"], name: "index_box_mails_on_box_id"
+    t.index ["inbound_mail_id"], name: "index_box_mails_on_inbound_mail_id"
+  end
+
+  create_table "boxes", charset: "utf8mb4", force: :cascade do |t|
+    t.string "email"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "box_mails", "action_mailbox_inbound_emails", column: "inbound_mail_id"
+  add_foreign_key "box_mails", "boxes"
 end
