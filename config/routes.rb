@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'box#index'
+  root "box#index"
 end
