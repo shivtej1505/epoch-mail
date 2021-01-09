@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_082056) do
+ActiveRecord::Schema.define(version: 2021_01_09_090310) do
 
   create_table "action_mailbox_inbound_emails", charset: "utf8mb4", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_082056) do
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_boxes_on_email", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
